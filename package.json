@@ -1,0 +1,22 @@
+{
+  "name": "bet-machine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run build && npm run watch",
+    "build": "tsc",
+    "watch": "tsc -w && nodemon ./dist/index.js",
+    "start": "npm run build && node ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^3.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
