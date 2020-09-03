@@ -1,0 +1,36 @@
+{
+  "providers": [
+    {
+      "providerName": "pinnacleBeta",
+      "isSingleEvent": true,
+      "urlList": [
+        "https://beta.pinnacle.com/en/Sports/12/Leagues/204405/Events/1035055578"
+      ],
+      "authUrl": "https://www.pinnacle.com/en/account/login",
+      "account": {
+        "login": "",
+        "password": ""
+      }
+    },
+    {
+      "providerName": "fonbet",
+      "urlList": ["https://www.fonbet.ru/#!/live/tennis"],
+      "account": {
+        "login": "",
+        "password": ""
+      }
+    },
+    {
+      "providerName": "ggbet",
+      "isSingleEvent": true,
+      "urlList": [
+        "https://gg.bet/ru/betting/match/5:9ce29abe-c3ac-4f7d-be8a-7c41329dafa4"
+      ],
+      "authUrl": "https://gg18.bet/ru/betting#!/auth/signin?popup",
+      "account": {
+        "login": "",
+        "password": ""
+      }
+    }
+  ]
+}

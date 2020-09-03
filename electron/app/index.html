@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Forks list</title>
+    <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="./styles/app.css" />
+  </head>
+  <body>
+    <div id="spinner" class="spinner-wrapper">
+      <div class="spinner-border"></div>
+    </div>
+    <div id="app">
+      <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li>
+              <button
+                type="button"
+                :class="['btn', 'ml-2', {'btn-outline-primary': !appStarted, 'btn-outline-danger': appStarted }]"
+                @click="launch"
+              >
+                {{ appStarted ? 'Stop' : 'Launch' }}
+              </button>
+            </li>
+          </ul>
+          <div class="form-inline  mr-2">
+            <button
+              :disabled="!appStarted"
+              class="btn btn-outline-primary my-2 my-sm-0"
+              @click="updatePageList"
+            >
+              Update pages
+            </button>
+          </div>
+          <div class="form-inline  mr-2">
+            <input
+              class="form-control mr-sm-2 input"
+              placeholder="Input speed"
+              type="number"
+              v-model="speed"
+              :disabled="appStarted"
+            />
+            <button
+              :disabled="appStarted"
+              class="btn btn-outline-info my-2 my-sm-0"
+              @click="changeSpeed"
+            >
+              Speed
+            </button>
+          </div>
+          <div class="form-inline">
+            <input
+              class="form-control mr-sm-2 input"
+              placeholder="Input bank"
+              type="number"
+              v-model="money"
+              :disabled="!appStarted"
+            />
+            <button
+              :disabled="!appStarted"
+              class="btn btn-outline-success my-2 my-sm-0"
+              @click="changeMoney"
+            >
+              Bank
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container py-md-3" v-if="forks.length">
+        <div class="row align-items-stretch">
+          <div class="col-sm-4 mt-4" v-for="fork in forks">
+            <div
+              :class="['card', {'border-success': fork.isSuccess, 'border-primary': fork.isPrimary, 'border-info': fork.isInfo, 'border-danger': fork.isNegative }]"
+            >
+              <div class="card-body">
+                <h4 class="card-title">
+                  {{ fork.firstGame.providerName }} ({{ fork.firstGameBet }}) -
+                  {{ fork.secondGame.providerName }} ({{ fork.secondGameBet }})
+                  <span
+                    :class="['badge', 'ml-2', {'badge-success': fork.isSuccess, 'badge-primary': fork.isPrimary, 'badge-info': fork.isInfo, 'badge-danger': fork.isNegative }]"
+                    >{{ Math.floor(fork.forkPercentage) }}%</span
+                  >
+                </h4>
+                <div class="card-text">
+                  <p>
+                    <b>{{ fork.firstGame.providerName }}:</b>
+                    <mark>{{ fork.firstGame.teams[0] }}</mark> -
+                    <mark>{{ fork.firstGame.teams[1] }}</mark
+                    ><br />
+                    <b>{{ fork.secondGame.providerName }}:</b>
+                    <mark>{{ fork.secondGame.teams[0] }}</mark> -
+                    <mark>{{ fork.secondGame.teams[1] }}</mark>
+                  </p>
+                  <p>
+                    <b>Match:</b> <mark>{{ fork.matchName }}</mark
+                    ><br />
+                    <b>Bet:</b> <mark>{{ fork.betName }}</mark>
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  @click="select(fork)"
+                  :class="['btn', {'btn-success': fork.isSuccess, 'btn-primary': fork.isPrimary, 'btn-info': fork.isInfo, 'btn-danger': fork.isNegative }]"
+                  >Make a bet</a
+                >
+                <button
+                  @click="closeCoupons"
+                  type="button"
+                  class="btn btn-outline-danger float-right"
+                >
+                  Close coupon
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="optionbar fixed-bottom">
+        <div class="form-inline mr-2">
+          <input
+            class="form-control mr-sm-2 input"
+            placeholder="Input precision"
+            type="number"
+            v-model="precision"
+            :disabled="!appStarted"
+          />
+          <button
+            :disabled="!appStarted"
+            class="btn btn-outline-danger my-2 my-sm-0"
+            @click="updatePrecision"
+          >
+            Precision
+          </button>
+        </div>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="exampleCheck1"
+            v-model="showNegative"
+          />
+          <label class="form-check-label" for="exampleCheck1"
+            >Negative forks</label
+          >
+        </div>
+      </nav>
+    </div>
+    <!-- <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script>
+      require('./scripts/app.js')
+    </script>
+  </body>
+</html>

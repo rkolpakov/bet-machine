@@ -1,0 +1,39 @@
+{
+  "providers": [
+    {
+      "providerName": "pinnacle",
+      "urlList": [
+        "https://www1.pinnacle.com/Sportsbook/Asia/en-GB/Bet/E%20Sports/All%20Games/Double/null/0/Regular/SportsBookAll/Decimal/61/#",
+        "https://www1.pinnacle.com/Sportsbook/Asia/en-GB/Bet/Tennis/Today/Double/null/0/Regular/SportsBookAll/Decimal/61/#sport=/Sportsbook/Asia/en-GB/GetLines/Tennis/Today/1/null/0/Regular/SportsBookAll/Decimal/61/false/"
+      ],
+      "authUrl": "https://www.pinnacle.com/en/account/login",
+      "account": {
+        "login": "",
+        "password": ""
+      }
+    },
+    {
+      "providerName": "ggbet",
+      "urlList": [
+        "https://gg18.bet/ru/betting",
+        "https://gg18.bet/ru/betting-sports"
+      ],
+      "authUrl": "https://gg18.bet/ru/betting#!/auth/signin?popup",
+      "account": {
+        "login": "",
+        "password": ""
+      }
+    },
+    {
+      "providerName": "fonbet",
+      "urlList": [
+        "https://www.fonbet.ru/#!/bets/esports",
+        "https://www.fonbet.ru/#!/bets/tennis"
+      ],
+      "account": {
+        "login": "",
+        "password": ""
+      }
+    }
+  ]
+}
